@@ -1,0 +1,13 @@
+{
+    "Nombre": "Antonio Cañete",
+    "Edad": 33,
+    "pais": "chile",
+    "habilidades": [
+        "Electrónica",
+        "soporte técnico",
+        "programación"
+    ],
+    "trabajo remoto": true
+}
+
+
