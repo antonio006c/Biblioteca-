@@ -10,16 +10,17 @@ class libro:
     def __str__(self):
         return f"{self.titulo} de {self.autor}  (isbn: {self.isbn}) {'disponible' if self.disponible else 'No disponible'}"
 
-    def usuario(self, nombre, id_usuario):
-        self.nombre = nombre
-        self.id_usuarios = id_usuario
-        self.libros_alquilados = []
+class Usuario:
+    def __init__(self, nombre, id_usuario):
+            self.nombre = nombre
+            self.id_usuario = id_usuario
+            self.libros_alquilados = []
 
     def alquilar_libro(self, libro):
         if libro.disponible:
             libro.disponible = False
             self.libros_alquilados.append(libro)
-            print(f"{self.nombre} a alquilado el libro {self.titulo}")
+            print(f"{self.nombre} a alquilado el libro {libro.titulo}")
         else:
             print(f" No se pude alguilar {libro.titulo} el libro no está disponible")
         
@@ -32,7 +33,7 @@ class libro:
             print(f"{self.nombre} no tiene {libro.titulo} para devolver")
 
 class biblioteca:
-    def __init_(self):
+    def __init__(self):
         self.libros = []
         self.usuarios = []
 
@@ -40,7 +41,7 @@ class biblioteca:
         self.libros.append(libro)    
 
     def registrar_un_usuario(self, usuario):
-        self.usuarios.append(libro)    
+        self.usuarios.append(usuario)    
         
     def mostrar_libros_disponibles(self):
         print("libros disponibles en la biblioteca: ")
@@ -64,7 +65,22 @@ if __name__ == "__main__":
 
 # Registrar usuarios
 
-    usuario1 = usuario("Alice", "U001")
-    usuario2 = usuario("Bob", "U002")
-    biblioteca.registrar_usuario(usuario1)
-    biblioteca.registrar_usuario(usuario2)
+    usuario1 = Usuario("Alice", "U001")
+    usuario2 = Usuario("Bob", "U002")
+    biblioteca.registrar_un_usuario(usuario1)
+    biblioteca.registrar_un_usuario(usuario2)
+
+# Mostrar libros disponibles
+
+    biblioteca.mostrar_libros_disponibles()
+
+# Alquilar y devolver libros
+
+    usuario1.alquilar_libro(libro1)
+    biblioteca.mostrar_libros_disponibles()
+
+    usuario1.devolver_libro(libro1)
+    biblioteca.mostrar_libros_disponibles()
+
+    usuario2.alquilar_libro(libro1)
+    biblioteca.mostrar_libros_disponibles()
